@@ -1,370 +1,647 @@
+ 
 <div align="center">
 
-<img src="./assets/banner.svg" alt="CodeForge AI Banner" width="100%" />
+# ⚡ CodeForge AI
 
-<br/>
+### Autonomous Coding Agent · CodeForge-H · AI Software Engineering
 
-<a href="https://github.com/PRIYAN-A-1/CodeForge-H-27B-Coding-LLM-">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1200&color=38BDF8&center=true&vCenter=true&width=850&lines=⚡+Autonomous+Multilingual+27B+Coding+LLM+Pipeline;🛠️+Full-Stack+Software+Synthesis+%26+Sandboxed+Agent;🛡️+Process-Isolated+Pytest+Jail+%26+Bounded+Self-Repair;🧪+48%2F48+Tests+Passing+(100%25+Green+%E2%80%A2+0+Errors);🧠+CodeForge-H%3A+3x+%5B3+DeltaNet+%2B+1+Attn%5D+Hybrid+Architecture" alt="Typing SVG" />
-</a>
-
-<br/>
-
-[![Tests](https://img.shields.io/badge/pytest-48%20passed%20(100%25)-10b981?style=for-the-badge&logo=pytest&logoColor=white)](file:///g:/My%20Drive/thoooo/tests)
-[![License](https://img.shields.io/badge/license-Apache--2.0-3b82f6?style=for-the-badge&logo=apache&logoColor=white)](file:///g:/My%20Drive/thoooo/LICENSE)
-[![Python](https://img.shields.io/badge/python-3.13-38bdf8?style=for-the-badge&logo=python&logoColor=white)](file:///g:/My%20Drive/thoooo/ENVIRONMENT.md)
-[![PyTorch](https://img.shields.io/badge/PyTorch-2.6%20CUDA-ee4c2c?style=for-the-badge&logo=pytorch&logoColor=white)](https://pytorch.org/)
-[![Hardware](https://img.shields.io/badge/RTX%203050-6GB%20VRAM-8b5cf6?style=for-the-badge&logo=nvidia&logoColor=white)](file:///g:/My%20Drive/thoooo/reports/hardware_report.json)
-[![Model](https://img.shields.io/badge/CodeForge--H-126.9M%20Hybrid-f59e0b?style=for-the-badge&logo=huggingface&logoColor=white)](file:///g:/My%20Drive/thoooo/model/hybrid_transformer.py)
-[![27B Target](https://img.shields.io/badge/Target-27B%20Coding%20LLM-ec4899?style=for-the-badge&logo=meta&logoColor=white)](file:///g:/My%20Drive/thoooo/MODEL_CARD_27B.md)
-[![Zero Cloud Spend](https://img.shields.io/badge/Cloud%20Spend-%240.00-10b981?style=for-the-badge&logo=googlecloud&logoColor=white)](file:///g:/My%20Drive/thoooo/configs/budget.yaml)
-
-<p align="center">
-  <a href="#1-executive-summary"><b>Executive Summary</b></a> •
-  <a href="#2-live-coding-agent-demonstration"><b>Agent Demo</b></a> •
-  <a href="#3-dual-tier-architecture"><b>Architecture</b></a> •
-  <a href="#4-autonomous-11-phase-training-pipeline"><b>11-Phase Pipeline</b></a> •
-  <a href="#5-dataset-governance--provenance-matrix"><b>Datasets</b></a> •
-  <a href="#6-quickstart--developer-cli"><b>Quickstart</b></a> •
-  <a href="#7-verified-telemetry--test-suite"><b>Tests & Telemetry</b></a>
+<p>
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=20&pause=1000&color=38BDF8&center=true&vCenter=true&width=900&lines=Describe+your+software+idea.;Plan+%E2%86%92+Generate+%E2%86%92+Validate+%E2%86%92+Repair.;Explore+hybrid+coding+LLM+architectures.;Build+with+transparent%2C+test-driven+workflows." alt="Animated CodeForge AI title" />
 </p>
 
----
+<p>
+  <img src="https://img.shields.io/badge/Python-3.13-3776AB?style=for-the-badge&logo=python&logoColor=white" alt="Python" />
+  <img src="https://img.shields.io/badge/FastAPI-REST%20API-009688?style=for-the-badge&logo=fastapi&logoColor=white" alt="FastAPI" />
+  <img src="https://img.shields.io/badge/PyTorch-Model%20Research-EE4C2C?style=for-the-badge&logo=pytorch&logoColor=white" alt="PyTorch" />
+  <img src="https://img.shields.io/badge/AI-Agent-7C3AED?style=for-the-badge" alt="AI Agent" />
+  <img src="https://img.shields.io/badge/Status-Experimental-F59E0B?style=for-the-badge" alt="Experimental project" />
+</p>
+
+**An experimental platform for requirement-driven project generation, code validation, bounded repair, and coding-language-model research.**
+
+[Repository](https://github.com/priyan1436ei-lab/-CodeForge-AI-CodeForge-H) · [Issues](https://github.com/priyan1436ei-lab/-CodeForge-AI-CodeForge-H/issues) · [Model Card](./MODEL_CARD_27B.md) · [Data Card](./DATA_CARD.md)
 
 </div>
 
-## 1. Executive Summary
+---
 
-**CodeForge AI** is an autonomous software development platform and multilingual coding LLM engine. Rather than producing disconnected snippets, hallucinated imports, or speculative code, CodeForge AI executes a **bounded, test-driven engineering loop**:
+## 🧭 Contents
 
-```
-Requirement Prompt ──► Pydantic Planner ──► Multi-File Synthesizer ──► Process Sandbox Jail ──► Bounded Self-Repair ──► Verified ZIP Export
-```
-
-1. **Requirement Planning:** Transforms ambiguous natural-language specifications into structured Pydantic `ProjectPlan` schemas, selects optimal modern tech stacks (e.g., FastAPI, Next.js 15, PostgreSQL/SQLite), and flags edge cases.
-2. **Multi-File Project Synthesis:** Generates complete, runnable directory structures, backend routers, frontend components, configurations, and pytest suites with path-traversal protection.
-3. **Sandboxed Verification:** Executes unit tests and syntax validation within an isolated process jail (`timeout=30s`, non-root, restricted directory boundaries).
-4. **Bounded Debugging & Repair:** Analyzes compiler logs and test failure tracebacks, applies minimal unified AST patches, and reruns tests within a strict retry budget (default 3 attempts).
-5. **Continuous Improvement Loop:** Stages runtime failures and human corrections into an automated feedback buffer for subsequent SFT model retraining.
-6. **ZIP Export:** Packages verified workspaces for one-click deployment.
+- [Overview](#-overview)
+- [Actual Source Code Analysis](#-actual-source-code-analysis)
+- [Features](#-features)
+- [Animated Workflow](#-animated-workflow)
+- [System Architecture](#-system-architecture)
+- [API Endpoints](#-api-endpoints)
+- [CodeForge-H Model](#-codeforge-h-model)
+- [Dataset and Training Pipeline](#-dataset-and-training-pipeline)
+- [Environment and Prerequisites](#-environment-and-prerequisites)
+- [Quickstart](#-quickstart)
+- [CLI Usage](#-cli-usage)
+- [Testing and Evaluation](#-testing-and-evaluation)
+- [Security and Limitations](#-security-and-limitations)
+- [Repository Structure](#-repository-structure)
+- [Roadmap](#-roadmap)
+- [Contributing](#-contributing)
+- [License](#-license)
 
 ---
 
-## 2. Live Coding Agent Demonstration
+## 🚀 Overview
 
-<div align="center">
-  <img src="./assets/terminal_demo.svg" alt="CodeForge Terminal Demo" width="100%" />
-</div>
+**CodeForge AI** is a Python-based experimental software-engineering agent paired with a coding-model research workspace named **CodeForge-H**.
 
----
+The project combines a requirement planner, multi-file project generator, FastAPI backend, validation and repair workflow, inference engine, model registry, and PyTorch model experiments.
 
-## 3. Dual-Tier Architecture
+The objective is to move beyond isolated code snippets towards a structured workflow that records what was planned, which files were generated, which checks ran, and whether the operation succeeded.
 
-To balance enterprise-grade 27B coding capability with local hardware reality ($0.00 cloud spend, NVIDIA RTX 3050 Laptop GPU with 6GB VRAM), CodeForge AI implements a **Dual-Tier System Architecture**:
+### Two connected areas
 
-```mermaid
-graph TD
-    User([User Prompt / API Request]) --> Router{Execution Router}
+| Component | Purpose |
+|---|---|
+| **CodeForge AI Agent** | Requirement planning, project generation, validation, repair, and export |
+| **CodeForge-H** | Coding-model architecture experiments, data preparation, training workflows, and evaluation |
 
-    subgraph Tier 1: Local Real-Time Engineering Engine
-        Router -->|Local Fast Path| CFH[CodeForge-H Hybrid Model<br/>126.94M Parameters]
-        CFH --> DNet[3x DeltaNet Linear RNN<br/>O(1) State Space Inference]
-        CFH --> MHA[1x Multi-Head Attention<br/>Exact Token-to-Token Needle Recall]
-        CFH --> MTP[Multi-Token Prediction Head<br/>Speculative Decoding x2 Speedup]
-        CFH --> Sandbox[Process-Isolated Sandbox Jail<br/>pytest & syntax verification]
-    end
-
-    subgraph Tier 2: 27B Distributed Training & High-Complexity SFT
-        Router -->|Distributed / Cloud Ladder| M27B[27B Coding LLM Target<br/>Qwen/DeepSeek Architecture]
-        M27B --> QLoRA[QLoRA 4-bit NormalFloat Adapter<br/>Rank=16, Alpha=32]
-        M27B --> LossMask[ChatML Loss Masking<br/>Assistant-Only Token Backprop]
-        M27B --> FIM[Fill-In-The-Middle PSM<br/>50.76% Prefix-Suffix-Middle]
-        M27B --> Ollama[Local Smoke Testing<br/>Ollama qwen3.8:27b / Mock Engine]
-    end
-
-    Sandbox --> Outcome{Tests Passed?}
-    Outcome -->|Fail| Repair[Bounded Self-Repair Engine<br/>Max 3 Retries]
-    Repair --> Sandbox
-    Outcome -->|Pass| Release[ZIP Packaging & Export]
-```
-
-### Architectural Highlights
-
-- **CodeForge-H (126.94M Parameters):** 3 blocks, each containing 3 DeltaNet linear recurrent layers followed by 1 Multi-Head Attention layer. Utilizes SwiGLU activations, RMSNorm, Rotary Position Embeddings (RoPE), tied embeddings, and an MTP speculative decoding head.
-- **27B QLoRA SFT Adapter:** Parameter-efficient fine-tuning with rank 16, target modules (`q_proj`, `k_proj`, `v_proj`, `o_proj`, `gate_proj`, `up_proj`, `down_proj`), and strict assistant-only cross-entropy loss masking.
+> [!IMPORTANT]
+> This is an experimental codebase. Model architecture definitions, pipeline scripts, test results, and claims of completed large-scale training are different types of evidence. Benchmark scores and training claims should be treated as verified only when the corresponding checkpoint, logs, exact configuration, and evaluation procedure can be reproduced.
 
 ---
 
-## 4. Autonomous 11-Phase Training Pipeline
+## 🔬 Actual Source Code Analysis
 
-CodeForge AI includes an autonomous training pipeline (`scripts/run_autonomous_pipeline.py`) that operates autonomously across 11 phases with zero manual intervention:
+This section describes what the inspected source files actually implement, rather than simply repeating feature claims.
+
+| Source file | Implementation |
+|---|---|
+| `agent/planner/planner.py` | Parses natural-language requirements using keyword-based rules and creates a Pydantic project plan |
+| `packages/shared/types.py` | Defines shared request, project-plan, file-manifest, validation, repair, model-registry, and token-ledger schemas |
+| `agent/generator/generator.py` | Builds project files from predefined templates, writes them to a workspace, and supports project artifact packaging |
+| `serve/pipeline.py` | Coordinates planning, generation, validation, bounded repair, and the final pipeline result |
+| `apps/api/main.py` | Exposes REST endpoints for projects, models, datasets, training, evaluation, token usage, and event streaming |
+| `cli/codeforge.py` | Provides CLI operations for planning, generation, validation, repair, model listing, training experiments, evaluation, and hardware reports |
+| `ml/inference/engine.py` | Routes inference requests through configured backend paths, including mock and Ollama-oriented execution, and records token/latency estimates |
+| `ml/model_registry/registry.py` | Maintains model metadata and performs hardware-feasibility checks |
+| `model/hybrid_transformer.py` | Implements a PyTorch hybrid decoder experiment with DeltaNet-style blocks and attention layers |
+| `model/deltanet_reference.py` | Provides a DeltaNet reference implementation |
+| `ml/training/pretraining/model.py` | Implements a separate decoder-only transformer configuration with GQA, RoPE, RMSNorm, SwiGLU, and an auxiliary MTP head |
+| `agent/execution/sandbox.py` | Executes commands with timeout and output controls |
+| `agent/repair/repair.py` | Validates generated backend files and attempts bounded repair |
+| `scripts/run_autonomous_pipeline.py` | Coordinates the documented data, training, evaluation, checkpoint, integration, and reporting phases |
+
+### Important implementation findings
+
+- The planner is primarily **keyword/rule-based**. It is not a fully semantic LLM planner.
+- The generator contains **predefined project templates**, including an expense-oriented backend example. Its inspected generation path builds file contents from templates; importing an inference engine does not itself prove that every generated file is produced by the custom model.
+- The inference engine includes a mock fallback. A mock-backed successful workflow demonstrates orchestration behavior, not custom-model coding quality.
+- The repository contains custom model code and a 27B training target. These do not by themselves prove that a custom 27B model has been fully trained.
+- The recorded environment describes a CPU-only PyTorch build with CUDA unavailable in that Python environment. Verify the active runtime before attempting GPU-dependent training.
+
+These distinctions are important for accurately describing the project's current maturity.
+
+---
+
+## ✨ Features
+
+### 🧩 Requirement-to-plan workflow
+
+The planner converts a natural-language request into a structured project plan containing:
+
+- Project ID and name
+- Frontend, backend, and database selections
+- Feature list
+- Requirements and acceptance criteria
+- Security and testing requirements
+- Clarification questions
+- Creation timestamp
+
+Stack selection currently uses explicit rules and can be overridden through a preferred-stack input. The resulting plan should be reviewed before implementation.
+
+### 🏗️ Multi-file project generation
+
+The generator creates a project workspace and returns a file manifest. Its templates include a README, environment example, backend dependency file, FastAPI application, and tests.
+
+Generated output should be reviewed for missing functionality, dependencies, inconsistent interfaces, and insecure defaults. A generated scaffold is not automatically a complete production application.
+
+### 🧪 Validation and repair
+
+The intended workflow is:
+
+1. Generate project files.
+2. Run available syntax checks and tests.
+3. Collect diagnostic output.
+4. Attempt a bounded repair if validation fails.
+5. Return the final status and unresolved errors.
+
+A successful result only demonstrates that the checks which actually ran passed.
+
+### 🧠 Model registry and inference
+
+The model registry stores metadata such as model ID, architecture, parameter count, context length, precision, backend, and estimated VRAM.
+
+The inference engine contains mock and Ollama-oriented paths, as well as a model/SFT-oriented path. Actual checkpoint availability and fallback behavior must be verified for the chosen configuration.
+
+### 📊 Dataset and training workflows
+
+The repository contains scripts and modules for dataset discovery, provenance and licence checks, preprocessing, tokenization, training experiments, evaluation, hardware preflight, checkpoint metadata, and reporting.
+
+The existence of a pipeline phase does not establish that the phase completed successfully. Confirm the run logs and output artifacts.
+
+---
+
+## 🎬 Animated Workflow
+
+The animated header uses an external typing-SVG service. GitHub renders the Mermaid diagrams below, but does not guarantee continuous animation within Mermaid diagrams themselves.
 
 ```mermaid
 flowchart TD
-    P0[Phase 0: Hardware & Memory Preflight] --> P1[Phase 1: Dataset Discovery]
-    P1 --> P2[Phase 2: License & Provenance Audit]
-    P2 --> P3[Phase 3: Bounded Ingestion & SHA-256]
-    P3 --> P4[Phase 4: Deduplication & Secret Scrubbing]
-    P4 --> P5[Phase 5: Multi-Objective Preparation]
-    P5 --> P6[Phase 6: Baseline Sandboxed Evaluation]
-    P6 --> P7[Phase 7: Training & SFT Checkpointing]
-    P7 --> P8[Phase 8: Checkpoint Evaluation & Feedback]
-    P8 --> P9[Phase 9: Export & Master Model Card]
-    P9 --> P10[Phase 10: Live Agent Verification]
-    P10 --> P11[Phase 11: Master Execution Reports]
-
-    classDef passed fill:#064e3b,stroke:#10b981,stroke-width:2px,color:#ecfdf5;
-    class P0,P1,P2,P3,P4,P5,P6,P7,P8,P9,P10,P11 passed;
+    A(["💬 User Requirement"]) --> B["🧩 Rule-Based Planning"]
+    B --> C["📋 Pydantic ProjectPlan"]
+    C --> D["🏗️ Template-Based Generation"]
+    D --> E["🧪 Syntax and Pytest Checks"]
+    E --> F{"Checks Passed?"}
+    F -->|Yes| G["📦 Report and Export"]
+    F -->|No| H["🔧 Bounded Repair"]
+    H --> E
+    H -. Retry limit reached .-> I["📝 Failure Diagnostics"]
 ```
 
-### Phase Breakdown & Execution Verification
+### Example request
 
-| Phase | Identity | Verification Outcome | Key Deliverables |
-| :--- | :--- | :---: | :--- |
-| **Phase 0** | **Hardware Preflight** | `PASSED` | Mathematical VRAM sizing; enforces dual-tier local safety gate. |
-| **Phase 1** | **Dataset Discovery** | `PASSED` | 26 open-source coding candidates cataloged in registry. |
-| **Phase 2** | **License & Provenance Audit** | `PASSED` | 24 approved (Apache-2.0, MIT); HumanEval & MBPP quarantined. |
-| **Phase 3** | **Bounded Acquisition** | `PASSED` | 206 raw records ingested within 20GB local storage budget ceiling. |
-| **Phase 4** | **Deduplication & Decontamination** | `PASSED` | 156 clean usable records; MinHash LSH near-dedup (0.85 threshold). |
-| **Phase 5** | **Multi-Objective Preparation** | `PASSED` | 110k FIM tokens (50.76% PSM rate); 155k ChatML masked SFT tokens. |
-| **Phase 6** | **Baseline Sandboxed Evaluation** | `PASSED` | HumanEval Pass@1: 20.0%, Tool Schema Accuracy: 50.0%. |
-| **Phase 7** | **Training Execution & Checkpoints** | `PASSED` | Dual-tier training execution with recovery mechanisms. |
-| **Phase 8** | **Evaluation & Feedback Loop** | `PASSED` | **HumanEval Pass@1: 60.0% (+40.0% gain)**, Tool Accuracy: 100.0%. |
-| **Phase 9** | **Model Export & Release** | `PASSED` | Release bundle staged; `MODEL_CARD_27B.md` generated with SHA-256. |
-| **Phase 10** | **Live Coding Agent Verification** | `PASSED` | Synthesized 9-file app; verified sandboxed pytest & defect self-repair. |
-| **Phase 11** | **Master Audit Reporting** | `PASSED` | JSON & Markdown reports compiled in `reports/`. |
+```text
+Build an expense-management API with:
+
+- FastAPI endpoints
+- Request validation
+- Expense listing and creation
+- A summary endpoint
+- Pytest tests
+- Local setup instructions
+```
+
+### Expected workflow outputs
+
+- Structured project plan
+- Generated file manifest
+- Project workspace
+- Validation results and diagnostics
+- Repair-attempt history, when applicable
+- Final success/failure status
+- ZIP archive path, if export completes successfully
+
+The actual output depends on the implementation, configuration, selected inference backend, and installed dependencies.
 
 ---
 
-## 5. Dataset Governance & Provenance Matrix
+## 🏛️ System Architecture
 
-The pipeline manages a curated catalog of **26 open-source datasets**, enforcing strict intellectual property hygiene, license compliance, and benchmark quarantine defense:
+```mermaid
+flowchart LR
+    U["User / CLI / HTTP"] --> API["FastAPI / CLI"]
+    API --> P["Requirement Planner"]
+    P --> PLAN["ProjectPlan"]
+    PLAN --> G["Code Generator"]
+    G --> W["Project Workspace"]
+    W --> V["Validation"]
+    V -->|Failure| R["Bounded Repair"]
+    R --> V
+    V --> OUT["Report / ZIP"]
 
-<details open>
-<summary><b>Click to expand Approved Training Datasets (24 Active)</b></summary>
+    API --> REG["Model Registry"]
+    REG --> INF["Inference Engine"]
+    INF --> MOCK["Mock Backend"]
+    INF --> OLLAMA["Ollama Backend"]
+    INF --> SFT["Model / SFT Path"]
 
-| Dataset Identifier | Canonical Source | License | Commercial Rights | Training Objective |
-| :--- | :--- | :---: | :---: | :--- |
-| `magicoder_oss_instruct` | [Hugging Face](https://huggingface.co/datasets/ise-uiuc/Magicoder-OSS-Instruct-75K) | MIT | Permitted | Multilingual Coding Instructions (Python, TypeScript, Go, SQL) |
-| `codefeedback_repair` | [Hugging Face](https://huggingface.co/datasets/m-a-p/CodeFeedback-Filtered-Instruction) | Apache-2.0 | Permitted | Error Analysis, Traceback Resolution & Self-Repair |
-| `synthetic_agent_verified` | Local Generator | Apache-2.0 | Permitted | Full-Stack Project Synthesis & Pytest Contracts |
-| `qwen25_coder_algorithms` | [Hugging Face](https://huggingface.co/datasets/Qwen/Qwen2.5-Coder-Instruct) | Apache-2.0 | Permitted | 25 Complex Algorithms & Data Structures |
-| `starcoder2_fim_realcode` | [Hugging Face](https://huggingface.co/datasets/bigcode/self-oss-instruct-sc2-exec-filter-50k) | Apache-2.0 | Permitted | 12 Production Systems Modules (S3, OAuth2, gRPC, Redis) |
-| `swe_bench_repo_repairs` | [GitHub](https://github.com/swe-bench/SWE-bench) | MIT | Permitted | 8 Repository Bug Diagnostics, Patches & Unit Tests |
-| `tooluse_agent_trajectories` | [GitHub](https://github.com/OpenBMB/ToolBench) | Apache-2.0 | Permitted | 4 Multi-Turn Tool Traces & Environment Observations |
-| `fullstack_system_blueprints` | Local Generator | Apache-2.0 | Permitted | 7 Multi-File Enterprise Architecture Specifications |
-| `the_stack_v2_curated` | [Hugging Face](https://huggingface.co/datasets/bigcode/the-stack-v2) | Apache-2.0 | Permitted | Multi-Language Foundation Pretraining |
-| `codeparrot_clean` | [Hugging Face](https://huggingface.co/datasets/codeparrot/codeparrot-clean) | MIT | Permitted | Python Code Completion & FIM |
+    DATA["Dataset Preparation"] --> TRAIN["Training Experiments"]
+    TRAIN --> EVAL["Evaluation and Reports"]
+```
 
-</details>
+### Architectural layers
 
-<details>
-<summary><b>Click to view Quarantined Benchmark Defense (Zero Contamination)</b></summary>
-
-> [!IMPORTANT]
-> To prevent benchmark leakage and artificial score inflation, the following evaluation benchmarks are **strictly quarantined** from the training stream via automated 13-gram decontamination filters:
->
-> - **HumanEval (OpenAI):** 164 hand-crafted Python programming problems (`MIT` license - quarantined).
-> - **MBPP (Google Research):** 974 crowd-sourced Python programming problems (`CC-BY-4.0` - quarantined).
-
-</details>
+| Layer | Responsibility |
+|---|---|
+| Interface | FastAPI routes and CLI commands |
+| Contracts | Shared Pydantic schemas |
+| Planning | Requirement parsing and stack selection |
+| Generation | File templates, manifest, workspace, and export |
+| Orchestration | Plan → generate → validate → repair |
+| Execution | Command execution, timeouts, output limits |
+| Repair | Validation and bounded repair attempts |
+| Inference | Backend routing and token/latency accounting |
+| Model registry | Model metadata and resource feasibility |
+| Model research | PyTorch architecture and training experiments |
+| Reporting | Dataset, training, evaluation, and hardware artifacts |
 
 ---
 
-## 6. Quickstart & Developer CLI
+## 🌐 API Endpoints
 
-### 6.1 Start FastAPI Backend & Interactive Web UI
+The following routes are defined in `apps/api/main.py`.
 
-```powershell
-# Start FastAPI backend server with live reload
-python -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8000 --reload
+| Method | Endpoint | Purpose |
+|---|---|---|
+| GET | `/` | Dashboard or API landing page |
+| GET | `/dashboard` | Dashboard page |
+| GET | `/api/health` | Health/status check |
+| GET | `/api/system/hardware` | Hardware report |
+| GET | `/api/models` | List registered models |
+| POST | `/api/models/load` | Request model loading |
+| POST | `/api/models/rollback` | Roll back active model selection |
+| POST | `/api/projects/plan` | Create a project plan |
+| POST | `/api/projects/generate` | Generate a project from a plan |
+| GET | `/api/projects/{project_id}` | Retrieve project information |
+| GET | `/api/projects/{project_id}/files` | Retrieve project file details |
+| POST | `/api/projects/{project_id}/validate` | Validate a generated project |
+| POST | `/api/projects/{project_id}/repair` | Attempt bounded repair |
+| POST | `/api/projects/{project_id}/export` | Export project artifacts |
+| GET | `/api/datasets` | List dataset records |
+| POST | `/api/datasets/validate` | Validate dataset metadata |
+| POST | `/api/training/preflight` | Check training feasibility |
+| POST | `/api/training/start` | Start a training job |
+| GET | `/api/training/{job_id}` | Retrieve training-job status |
+| POST | `/api/training/{job_id}/stop` | Request a training-job stop |
+| POST | `/api/training/27b-autonomous-pipeline` | Start the autonomous pipeline |
+| GET | `/api/training/27b-autonomous-pipeline/status` | Retrieve pipeline status |
+| GET | `/api/evaluations` | Retrieve evaluation records |
+| GET | `/api/usage/tokens` | Retrieve token-usage summary |
+| GET | `/api/events` | Stream event updates |
+
+### API documentation
+
+Once the local server is running:
+
+- Swagger UI: [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
+- OpenAPI JSON: [http://127.0.0.1:8000/openapi.json](http://127.0.0.1:8000/openapi.json)
+
+---
+
+## 🧠 CodeForge-H Model
+
+The repository contains more than one model implementation/configuration. Report their architecture, parameter counts, training state, and evaluation results separately.
+
+### Hybrid decoder experiment
+
+`model/hybrid_transformer.py` defines `CodeForgeHConfig` and `CodeForgeHModel`. The documented design uses repeating groups of three DeltaNet-style blocks followed by an attention block.
+
+The source references:
+
+- DeltaNet-style linear/recurrent processing
+- Grouped Query Attention (GQA)
+- Rotary positional embeddings (RoPE)
+- RMSNorm
+- SwiGLU feed-forward layers
+- Tied token embeddings and output weights
+- Multi-Token Prediction (MTP) auxiliary head
+
+The default configuration includes a vocabulary size of 49,152, hidden dimension of 768, and 12 layers. These are configuration values, not proof that a released checkpoint was trained to a particular quality level.
+
+### Separate decoder-only transformer
+
+`ml/training/pretraining/model.py` defines another transformer configuration with causal self-attention, GQA, RoPE, RMSNorm, SwiGLU, tied embeddings, and an auxiliary MTP head.
+
+Keep its results separate from the hybrid model's results.
+
+### 27B target and hardware feasibility
+
+The project includes a 27B-class training/pipeline target. The hardware preflight code recognizes that full 27B training is not feasible on the documented local RTX 3050 setup, and its QLoRA memory estimate is above the GPU's physical VRAM.
+
+The recorded `ENVIRONMENT.md` identifies PyTorch as a CPU build and records `torch.cuda.is_available() == False`.
+
+Verify the active environment with:
+
+```bash
+python -c "import torch; print('PyTorch:', torch.__version__); print('CUDA build:', torch.version.cuda); print('CUDA available:', torch.cuda.is_available())"
 ```
 
-- **Interactive Web Dashboard:** [http://127.0.0.1:8000/](http://127.0.0.1:8000/)
-- **Swagger REST API Documentation:** [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs)
-- **OpenAPI JSON Schema:** [http://127.0.0.1:8000/openapi.json](http://127.0.0.1:8000/openapi.json)
+A 27B target, an Ollama-served external model, a custom compact architecture, and a trained custom 27B checkpoint are not equivalent. Completed-training claims require checkpoint evidence and reproducible logs.
 
-### 6.2 Execute Autonomous Project Synthesis
+---
 
-```powershell
-python -m serve.pipeline "Build an expense management system with Next.js and FastAPI"
+## 📚 Dataset and Training Pipeline
+
+`scripts/run_autonomous_pipeline.py` documents an 11-phase workflow:
+
+1. **Hardware preflight** — inspect runtime and estimate memory.
+2. **Dataset discovery** — identify candidate sources.
+3. **Licence and provenance review** — review source metadata and exclusions.
+4. **Data acquisition** — bounded ingestion and integrity checks.
+5. **Preprocessing** — cleaning, secret scanning, exact and near-duplicate detection.
+6. **Training-data preparation** — FIM, SFT/ChatML, and agent trajectories as configured.
+7. **Baseline evaluation** — run the configured evaluation harness.
+8. **Training/fine-tuning** — execute the selected experiment.
+9. **Checkpoint evaluation** — compare available metrics and regressions.
+10. **Export and agent integration** — prepare artifacts and test the agent path.
+11. **Master reporting** — collect run metadata and reports.
+
+This describes the pipeline design. A phase is complete only when its execution status and output artifacts confirm completion.
+
+### Dataset governance checklist
+
+Before using a source, verify:
+
+- Canonical URL and exact revision
+- Applicable licence and terms
+- Commercial-use and redistribution restrictions
+- Attribution obligations
+- Dataset version and retrieval date
+- File hashes and processing configuration
+- Secret/PII scanning results
+- Duplicate and malformed-example statistics
+- Benchmark separation and decontamination checks
+- Rights to redistribute processed artifacts
+
+See [`DATA_CARD.md`](./DATA_CARD.md) and [`MODEL_CARD_27B.md`](./MODEL_CARD_27B.md) for project documentation.
+
+---
+
+## 🖥️ Environment and Prerequisites
+
+The repository's `ENVIRONMENT.md` records these notable details:
+
+| Component | Recorded detail |
+|---|---|
+| Python | 3.13.x |
+| FastAPI | 0.115.x |
+| Uvicorn | 0.34.x |
+| Pydantic | 2.x |
+| Pytest | 8.x |
+| PyTorch | CPU build in the documented environment |
+| GPU | NVIDIA RTX 3050 Laptop GPU, 6 GB physical VRAM |
+| Ollama | Configured at localhost port 11434 in the environment notes |
+| Docker | Not recorded as available on PATH |
+
+These are environment notes, not universal requirements. Recheck installed versions before debugging compatibility issues.
+
+---
+
+## 🚀 Quickstart
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/priyan1436ei-lab/-CodeForge-AI-CodeForge-H.git
+cd -CodeForge-AI-CodeForge-H
 ```
 
-### 6.3 Unified Developer CLI (`codeforge`)
+### 2. Create a virtual environment
+
+**Windows PowerShell**
 
 ```powershell
-# Plan project architecture
-python -m cli.codeforge plan "Build a real-time collaborative canvas with WebSockets"
+py -3.13 -m venv .venv
+.\.venv\Scripts\Activate.ps1
+python -m pip install --upgrade pip
+```
 
-# Generate complete multi-file project with sandboxed testing
-python -m cli.codeforge gen "Build a HIPAA-compliant medical portal with FastAPI and React"
+**Linux/macOS**
 
-# Inspect model capabilities and VRAM feasibility
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+python -m pip install --upgrade pip
+```
+
+### 3. Inspect dependency manifests
+
+```bash
+git ls-files "*requirements*.txt" "pyproject.toml" "setup.py" "environment.yml"
+```
+
+Install dependencies from the manifest actually present in the checkout.
+
+During this review, the root-level `pyproject.toml` and `requirements.txt` paths were not found. A fully reproducible clean installation still needs to be confirmed from the tracked dependency files.
+
+### 4. Install dependencies
+
+Use the repository's dependency manifest if present. If no maintained manifest exists, create and verify one before claiming reproducible installation.
+
+The inspected modules import packages including FastAPI, Uvicorn, Pydantic, Pydantic Settings, PyTorch, and Pytest. Other modules may require additional packages.
+
+### 5. Start the API
+
+If `apps/api/main.py` and its dependencies are available:
+
+```bash
+python -m uvicorn apps.api.main:app --host 127.0.0.1 --port 8000
+```
+
+Open [http://127.0.0.1:8000/docs](http://127.0.0.1:8000/docs) to inspect the API schema.
+
+Keep the server on localhost during development. Review CORS, authentication, and execution isolation before exposing it to a network.
+
+### 6. Run tests
+
+If the test suite and dependencies are available:
+
+```bash
+python -m pytest tests/ -v
+```
+
+Record the commit SHA, dependency versions, command, exit code, and test summary. Historical test counts should not be presented as current results unless the suite has been rerun against the relevant commit.
+
+---
+
+## 💻 CLI Usage
+
+The CLI in `cli/codeforge.py` defines operations for planning, generation, validation, repair, model listing, pretraining smoke tests, SFT smoke tests, evaluation, hardware reporting, and autonomous training.
+
+Check the current options:
+
+```bash
+python -m cli.codeforge --help
+```
+
+Example commands defined by the CLI include:
+
+```bash
+# Create a structured project plan
+python -m cli.codeforge plan "Build a task management application"
+
+# Generate a project through the orchestration pipeline
+python -m cli.codeforge gen "Build an expense management API"
+
+# List registered models
 python -m cli.codeforge models
 
-# Run sandboxed model evaluation suite
+# Run the evaluation harness
 python -m cli.codeforge eval
 
-# Profile host hardware telemetry
+# Inspect hardware report
 python -m cli.codeforge hardware
 ```
 
-### 6.4 Run the Master 11-Phase Autonomous 27B Pipeline
-
-```powershell
-python scripts/run_autonomous_pipeline.py --steps 5 --budget-gb 20
-```
+Some commands require optional dependencies, a configured inference backend, or data/checkpoint files. Verify the command options and runtime prerequisites before using them.
 
 ---
 
-## 7. Verified Telemetry & Test Suite
+## 🧪 Testing and Evaluation
 
-### 7.1 Host Hardware Profile
+Use tests to verify implementation behavior, not to infer general model intelligence.
 
-- **CPU:** AMD Ryzen 5 7235HS (4 physical cores, 8 logical threads @ 3.2 GHz)
-- **RAM:** 23.69 GB physical RAM (~4.2 GB free at idle)
-- **GPU:** NVIDIA GeForce RTX 3050 Laptop GPU (6,144 MB VRAM, CUDA 13.1, Driver 591.74)
-- **Local Inference:** Ollama running at `127.0.0.1:11434` (`qwen3.8:27b` detected)
-- **Cost Enforcement:** Local execution cost: **$0.00** (Strict compute budget gatekeeper active)
-
-### 7.2 Full Test Suite Results (48/48 Passed, 100% Green)
-
-```powershell
-pytest tests/ -v
+```bash
+python -m pytest tests/ -v
 ```
 
-```
-============================= test session starts =============================
-platform win32 -- Python 3.13.2, pytest-8.3.4, pluggy-1.5.0
-cachedir: .pytest_cache
-rootdir: G:\My Drive\thoooo, configfile: pytest.ini
-plugins: anyio-4.8.0, asyncio-0.25.3
-collected 48 items
+### Useful evaluation dimensions
 
-tests/e2e/test_e2e_workflow.py::test_full_autonomous_loop_expense_tracker       PASSED [  2%]
-tests/integration/test_integration_api.py::test_api_health_check                PASSED [  4%]
-tests/integration/test_integration_api.py::test_api_plan_endpoint               PASSED [  6%]
-tests/integration/test_integration_api.py::test_api_generate_and_zip_export    PASSED [  8%]
-tests/integration/test_integration_api.py::test_api_repair_endpoint             PASSED [ 10%]
-tests/integration/test_integration_api.py::test_api_streaming_events            PASSED [ 12%]
-tests/integration/test_integration_api.py::test_api_model_registry_list        PASSED [ 14%]
-tests/security/test_security_sandbox.py::test_directory_traversal_jail_prevention PASSED [ 16%]
-tests/security/test_security_sandbox.py::test_infinite_loop_timeout_enforcement PASSED [ 18%]
-tests/security/test_security_sandbox.py::test_system_command_injection_defense  PASSED [ 20%]
-tests/security/test_security_sandbox.py::test_non_root_jail_isolation           PASSED [ 22%]
-tests/security/test_security_sandbox.py::test_memory_leak_cgroup_simulation     PASSED [ 25%]
-tests/test_27b_pipeline.py::test_dataset_registry_json_and_csv_exist_and_valid  PASSED [ 27%]
-tests/test_27b_pipeline.py::test_license_validation_quarantines_benchmarks      PASSED [ 29%]
-tests/test_27b_pipeline.py::test_27b_memory_calculation_math                   PASSED [ 31%]
-tests/test_27b_pipeline.py::test_pretraining_fim_transformation                PASSED [ 33%]
-tests/test_27b_pipeline.py::test_sft_chatml_assistant_loss_masking             PASSED [ 35%]
-tests/test_27b_pipeline.py::test_agent_trajectories_schema                     PASSED [ 37%]
-tests/test_27b_pipeline.py::test_model_export_and_card                         PASSED [ 39%]
-tests/test_autonomous_27b_pipeline.py::test_autonomous_pipeline_initialization PASSED [ 41%]
-tests/test_autonomous_27b_pipeline.py::test_phase_0_hardware_preflight_math     PASSED [ 43%]
-tests/test_autonomous_27b_pipeline.py::test_phase_1_and_2_discovery_and_licensing PASSED [ 45%]
-tests/test_autonomous_27b_pipeline.py::test_phase_4_and_5_cleaning_and_objectives PASSED [ 47%]
-tests/test_autonomous_27b_pipeline.py::test_continuous_improvement_feedback_staging PASSED [ 50%]
-tests/test_autonomous_27b_pipeline.py::test_phase_10_live_coding_agent_integration PASSED [ 52%]
-tests/test_autonomous_27b_pipeline.py::test_fastapi_autonomous_pipeline_endpoints PASSED [ 54%]
-tests/test_model.py::test_hybrid_transformer_forward_backward_pass             PASSED [ 56%]
-tests/test_model.py::test_causal_masking_invariance                             PASSED [ 58%]
-tests/test_model_section_k.py::test_deltanet_state_recurrence_invariance        PASSED [ 60%]
-tests/test_model_section_k.py::test_finite_gradient_propagation                 PASSED [ 62%]
-tests/test_model_section_k.py::test_rotary_position_embedding_causality        PASSED [ 64%]
-tests/test_pretraining.py::test_pretraining_loss_decreases_over_steps           PASSED [ 66%]
-tests/test_sft.py::test_sft_loss_masking_assistant_only                        PASSED [ 68%]
-tests/unit/test_cli_pipeline.py::test_cli_plan_command                          PASSED [ 70%]
-tests/unit/test_cli_pipeline.py::test_cli_gen_command                           PASSED [ 72%]
-tests/unit/test_cli_pipeline.py::test_cli_models_and_hardware_commands         PASSED [ 75%]
-tests/unit/test_cli_pipeline.py::test_pipeline_run_to_zip_export               PASSED [ 77%]
-tests/unit/test_unit_core.py::test_cleaning_pipeline_removes_malformed_code    PASSED [ 79%]
-tests/unit/test_unit_core.py::test_bpe_tokenizer_encoding_decoding             PASSED [ 81%]
-tests/unit/test_unit_core.py::test_fim_prefix_suffix_middle_distribution      PASSED [ 83%]
-tests/unit/test_unit_core.py::test_minhash_near_deduplication                   PASSED [ 85%]
-tests/unit/test_unit_core.py::test_secret_scrubbing_removes_api_keys           PASSED [ 87%]
-tests/unit/test_unit_core.py::test_pydantic_project_plan_validation            PASSED [ 89%]
-tests/unit/test_unit_core.py::test_token_economics_ledger                      PASSED [ 91%]
-tests/unit/test_unit_core.py::test_repair_engine_patch_generation              PASSED [ 93%]
-tests/unit/test_unit_core.py::test_sandbox_timeout_handler                     PASSED [ 95%]
-tests/unit/test_unit_core.py::test_dataset_manifest_checksum_verification      PASSED [ 97%]
-tests/unit/test_unit_core.py::test_model_registry_vram_gatekeeper              PASSED [100%]
-============================= 48 passed in 165.95s =============================
-```
+| Metric | Meaning |
+|---|---|
+| Planner correctness | Whether stack and feature choices match the request |
+| File-generation validity | Whether generated files exist and parse |
+| Test pass rate | Whether generated projects pass their defined tests |
+| Repair success | Whether failures are fixed within the retry budget |
+| Task success | Whether a fixed requirement set is completed |
+| Latency | Time from request to final result |
+| Resource usage | CPU, RAM, VRAM, and token consumption |
+| Reproducibility | Whether the same revision and settings produce comparable results |
+
+### Minimum benchmark record
+
+A credible benchmark report should include:
+
+- Git commit SHA and model/checkpoint SHA-256
+- Exact model and adapter revision
+- Task-set and dataset version
+- Prompt templates and decoding parameters
+- Dependency versions and hardware/runtime details
+- Number of tasks and pass/fail counts
+- Raw logs and evaluation script
+- Known limitations and failure categories
+
+Small smoke-test sets are useful for debugging but should not be presented as conclusive evidence of broad coding capability.
 
 ---
 
-## 8. Repository Structure
+## 🔐 Security and Limitations
 
-```
-codeforge-ai/
+### Execution safety
+
+The execution module includes command-token denylisting, subprocess timeouts, working-directory controls, and output limits. However, the inspected implementation uses `subprocess.Popen(..., shell=True)`.
+
+**This is process-level execution with guardrails, not a hardened OS/container security boundary.** Text-based command denylisting is not a complete defence against malicious generated code.
+
+Before executing generated code on a machine with sensitive data:
+
+- Prefer a disposable container or VM with a non-root user.
+- Disable network access unless explicitly required.
+- Apply CPU, RAM, process, disk, and wall-clock limits.
+- Avoid mounting credentials or personal files into the workspace.
+- Use command allowlists and argument arrays instead of arbitrary shell strings.
+- Review generated scripts and package lifecycle commands before execution.
+- Keep secrets outside the workspace and redact logs.
+
+### API configuration
+
+The current FastAPI application configures wildcard CORS origins together with credentials. Restrict allowed origins before deployment. Authentication, authorization, rate limiting, and execution isolation should be reviewed before exposing the API as a public service.
+
+### Generation limitations
+
+The inspected planner is rule-based, and the generator includes predefined templates. These are useful foundations for experimentation, but they do not guarantee full implementation of arbitrary requirements. Review generated files and run appropriate tests.
+
+### Model and training limitations
+
+- A declared 27B target is not proof of a trained custom 27B checkpoint.
+- A model card is not a substitute for a loadable checkpoint and reproducible evaluation.
+- A mock inference response is not evidence of model performance.
+- CUDA support must be verified in the active Python environment.
+- Dataset licence labels require verification against original source terms.
+
+---
+
+## 🗺️ Repository Structure
+
+The following is a focused map of the source paths inspected for this README, not an exhaustive inventory of every tracked file.
+
+```text
+.
 ├── apps/
-│   ├── web/                     # Next.js 15 + Tailwind CSS + TypeScript frontend
-│   └── api/                     # FastAPI backend server & static dashboard UI
-├── packages/
-│   └── shared/                  # Pydantic v2 schemas and type definitions
-├── ml/
-│   ├── data/
-│   │   ├── collection/          # Autonomous dataset downloaders & generators
-│   │   ├── preprocessing/       # Cleaning, heuristic filters, deduplication
-│   │   ├── tokenization/        # BPE tokenizer, FIM pipeline, uint16 packing
-│   │   └── validation/          # Manifest validation & 13-gram decontamination
-│   ├── training/
-│   │   ├── pretraining/         # CodeForge-H model & from-scratch pretraining
-│   │   └── finetuning/          # SFT LoRA pipeline & adapter checkpointing
-│   ├── evaluation/              # Unbiased pass@k & benchmark fixtures
-│   ├── inference/               # Inference engine (Mock, Ollama, Transformers)
-│   └── model_registry/          # Capability catalog & VRAM preflight checks
+│   └── api/
+│       └── main.py                  # FastAPI routes and dashboard
 ├── agent/
-│   ├── planner/                 # Requirement parser & architecture planner
-│   ├── generator/               # Multi-file project code generator
-│   ├── execution/               # Process-bounded sandbox jail & timeouts
-│   ├── repair/                  # Bounded debugging & repair engine
-│   └── feedback/                # Continuous improvement failure buffer
-├── datasets/
-│   ├── registry.json            # 26 Cataloged dataset registry
-│   ├── agent_trajectories/      # Multi-turn tool execution traces
-│   ├── raw/                     # Ingested datasets (excluded from git)
-│   └── processed/               # Tokenized FIM and SFT ChatML shards
-├── checkpoints/
-│   └── exported_release/        # Release LoRA adapter bundle & metadata
-├── tests/
-│   ├── unit/                    # Unit tests for cleaning, tokenization, config
-│   ├── integration/             # API endpoint integration tests
-│   ├── security/                # Sandboxing, injection, and path traversal tests
-│   └── e2e/                     # End-to-end requirement to ZIP export tests
+│   ├── planner/
+│   │   └── planner.py               # Requirement-to-plan rules
+│   ├── generator/
+│   │   └── generator.py             # Templates and project workspace
+│   ├── execution/
+│   │   └── sandbox.py               # Process execution and timeouts
+│   └── repair/
+│       └── repair.py                # Validation and bounded repair
+├── packages/
+│   └── shared/
+│       └── types.py                 # Pydantic data contracts
+├── serve/
+│   └── pipeline.py                  # End-to-end agent orchestration
+├── cli/
+│   └── codeforge.py                 # Developer CLI
+├── ml/
+│   ├── inference/
+│   │   └── engine.py                # Inference backend routing
+│   ├── model_registry/
+│   │   └── registry.py              # Model metadata and feasibility
+│   └── training/
+│       └── pretraining/
+│           └── model.py             # Decoder-only model experiment
+├── model/
+│   ├── hybrid_transformer.py        # Hybrid CodeForge-H architecture
+│   └── deltanet_reference.py        # DeltaNet reference implementation
 ├── scripts/
-│   ├── run_autonomous_pipeline.py # Master 11-phase autonomous pipeline
-│   ├── discover_datasets.py     # Registry discovery & search
-│   ├── validate_licenses.py     # Legal audit & benchmark quarantine
-│   ├── deduplicate_data.py      # MinHash LSH deduplication
-│   ├── prepare_pretraining.py   # Fill-in-the-Middle tokenization
-│   ├── prepare_sft.py           # ChatML assistant loss masking
-│   └── prepare_agent_data.py    # Agent trajectory preparation
-├── configs/
-│   ├── budget.yaml              # Compute budget ceiling ($0.00 local spend)
-│   └── config.py                # Pydantic application settings
-├── reports/                     # Audit, evaluation, hardware, and token reports
-├── assets/                      # Animated SVG banners & terminal mockups
-├── MODEL_CARD_27B.md            # Comprehensive 27B model specification
-├── DATA_CARD.md                 # Data sources, licensing & governance
-├── DECISIONS.md                 # Architecture decision records
-├── ENVIRONMENT.md               # Runtime environment specifications
-└── pytest.ini                   # Pytest configuration & asyncio fixture scope
+│   └── run_autonomous_pipeline.py   # Training pipeline orchestrator
+├── datasets/                        # Dataset data/metadata
+├── checkpoints/                     # Model artifacts, when available
+├── reports/                          # Run and hardware reports
+├── MODEL_CARD_27B.md                # Model documentation
+├── DATA_CARD.md                     # Dataset governance notes
+├── ENVIRONMENT.md                   # Runtime details
+├── DECISIONS.md                     # Engineering decision records
+└── README.md
 ```
 
 ---
+
+## 🛣️ Roadmap
+
+- [ ] Add a verified dependency manifest for clean installation.
+- [ ] Add a minimal end-to-end demo with mock inference clearly labelled.
+- [ ] Make the generator use model-produced content when a model backend is selected, rather than relying primarily on static templates.
+- [ ] Improve requirement parsing and clarification handling.
+- [ ] Replace arbitrary shell execution with stronger command controls and container/VM isolation.
+- [ ] Restrict CORS and document API authentication before deployment.
+- [ ] Add CI for unit, integration, and security tests.
+- [ ] Publish reproducible model-training logs and checkpoint checksums.
+- [ ] Keep compact-model and 27B-target evaluation reports separate.
+- [ ] Publish fixed evaluation tasks and raw results.
+- [ ] Track tested model backends and checkpoints in the model registry.
+
+---
+
+## 🤝 Contributing
+
+Contributions are welcome.
+
+1. Open an issue describing the problem or proposed improvement.
+2. Include the commit, operating system, Python version, and relevant dependencies.
+3. Provide a minimal reproduction where possible.
+4. Add tests for behavior changes.
+5. Do not commit credentials, private data, large checkpoints, or datasets without reviewing repository policy and usage rights.
+6. Include provenance and licence details for data-related changes.
+7. Keep performance and benchmark claims reproducible.
+
+---
+
+## 📜 License
+
+The existing project documentation refers to Apache License 2.0. Verify the repository's actual `LICENSE` file and the rights for each third-party component before redistributing the project.
+
+Third-party datasets, model weights, and dependencies may have separate terms. The project licence does not automatically relicense those materials.
+
+## 👤 Maintainer
+
+**Priyan A** · [GitHub profile](https://github.com/priyan1436ei-lab)
 
 <div align="center">
 
-### Built with ❤️ for Autonomous Software Engineering & Open-Source AI
+### ⚡ Plan clearly. Generate carefully. Validate honestly.
 
-**Author & Lead Engineer:** Priyan ([priyan1436ei@gmail.com](mailto:priyan1436ei@gmail.com)) • [@PRIYAN-A-1](https://github.com/PRIYAN-A-1)  
-**License:** [Apache License 2.0](file:///g:/My%20Drive/thoooo/LICENSE) © 2026 Priyan
-
-<br/>
-
-[![GitHub Stars](https://img.shields.io/github/stars/PRIYAN-A-1/CodeForge-H-27B-Coding-LLM-?style=social)](https://github.com/PRIYAN-A-1/CodeForge-H-27B-Coding-LLM-)
-[![GitHub Forks](https://img.shields.io/github/forks/PRIYAN-A-1/CodeForge-H-27B-Coding-LLM-?style=social)](https://github.com/PRIYAN-A-1/CodeForge-H-27B-Coding-LLM-)
+<sub>CodeForge AI · Experimental autonomous software engineering and coding-LLM research</sub>
 
 </div>
