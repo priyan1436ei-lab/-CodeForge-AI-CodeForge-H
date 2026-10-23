@@ -1,22 +1,22 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 360" width="100%" height="auto" style="background: transparent;">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 370" width="100%" height="auto" style="background: transparent;">
   <defs>
     <!-- Background Gradient -->
     <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-      <stop offset="0%" stop-color="#0a0e17" />
-      <stop offset="50%" stop-color="#0f172a" />
-      <stop offset="100%" stop-color="#080c14" />
+      <stop offset="0%" stop-color="#070b14" />
+      <stop offset="50%" stop-color="#0d1527" />
+      <stop offset="100%" stop-color="#050811" />
     </linearGradient>
 
     <!-- Border Pulse Gradient -->
     <linearGradient id="borderGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#38bdf8">
-        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#c084fc;#f472b6;#38bdf8" dur="8s" repeatCount="indefinite" />
+        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#c084fc;#ec4899;#10b981;#38bdf8" dur="10s" repeatCount="indefinite" />
       </stop>
       <stop offset="50%" stop-color="#818cf8">
-        <animate attributeName="stop-color" values="#818cf8;#c084fc;#f472b6;#38bdf8;#818cf8" dur="8s" repeatCount="indefinite" />
+        <animate attributeName="stop-color" values="#818cf8;#c084fc;#ec4899;#10b981;#38bdf8;#818cf8" dur="10s" repeatCount="indefinite" />
       </stop>
-      <stop offset="100%" stop-color="#38bdf8">
-        <animate attributeName="stop-color" values="#c084fc;#f472b6;#38bdf8;#818cf8;#c084fc" dur="8s" repeatCount="indefinite" />
+      <stop offset="100%" stop-color="#ec4899">
+        <animate attributeName="stop-color" values="#c084fc;#ec4899;#10b981;#38bdf8;#818cf8;#c084fc" dur="10s" repeatCount="indefinite" />
       </stop>
     </linearGradient>
 
@@ -28,45 +28,67 @@
     </linearGradient>
 
     <!-- Grid Pattern -->
-    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse">
-      <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(56, 189, 248, 0.07)" stroke-width="1" />
+    <pattern id="grid" width="36" height="36" patternUnits="userSpaceOnUse">
+      <path d="M 36 0 L 0 0 0 36" fill="none" stroke="rgba(56, 189, 248, 0.08)" stroke-width="1" />
     </pattern>
 
-    <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+    <!-- Laser Line Gradient -->
+    <linearGradient id="laserBeam" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0" />
+      <stop offset="50%" stop-color="#38bdf8" stop-opacity="1" />
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0" />
+    </linearGradient>
+
+    <filter id="bannerGlow" x="-20%" y="-20%" width="140%" height="140%">
       <feGaussianBlur stdDeviation="8" result="blur" />
-      <feComposite in="SourceGraphic" in2="blur" operator="over" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
     </filter>
   </defs>
 
   <style>
-    @keyframes pulseGlow {
-      0%, 100% { opacity: 0.3; transform: scale(1); }
-      50% { opacity: 0.7; transform: scale(1.02); }
+    @keyframes scanlineAnim {
+      0% { transform: translateY(-370px); }
+      100% { transform: translateY(370px); }
     }
-    @keyframes scanline {
-      0% { transform: translateY(-360px); }
-      100% { transform: translateY(360px); }
-    }
-    @keyframes blink {
+    @keyframes cursorBlink {
       0%, 100% { opacity: 1; }
       50% { opacity: 0; }
     }
-    .cursor { animation: blink 1s infinite; }
+    @keyframes radarSpin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    @keyframes orbFloat {
+      0%, 100% { transform: translate(0, 0); }
+      50% { transform: translate(25px, -15px); }
+    }
+
+    .cursor { animation: cursorBlink 1s infinite; }
+    .scanline { animation: scanlineAnim 6s linear infinite; }
+    .orb-anim { animation: orbFloat 8s ease-in-out infinite; }
     .title { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-weight: 800; font-size: 44px; letter-spacing: -0.5px; fill: url(#textGrad); }
-    .badge-text { font-family: 'SF Mono', 'Fira Code', Menlo, monospace; font-size: 12px; font-weight: 700; letter-spacing: 1.5px; fill: #38bdf8; text-transform: uppercase; }
+    .badge-text { font-family: 'SF Mono', 'Fira Code', Menlo, monospace; font-size: 11px; font-weight: 700; letter-spacing: 1.5px; fill: #38bdf8; text-transform: uppercase; }
     .subtitle { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; font-size: 17px; fill: #94a3b8; font-weight: 400; }
     .chip-text { font-family: 'SF Mono', 'Fira Code', Menlo, monospace; font-size: 12px; fill: #cbd5e1; font-weight: 500; }
   </style>
 
   <!-- Main Container -->
-  <rect x="5" y="5" width="990" height="350" rx="20" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="2.5" />
-  
-  <!-- Cyber Background Grid -->
-  <rect x="6" y="6" width="988" height="348" rx="19" fill="url(#grid)" />
+  <rect x="5" y="5" width="990" height="360" rx="20" fill="url(#bgGrad)" stroke="url(#borderGrad)" stroke-width="2.5" />
 
-  <!-- Ambient Light Orbs -->
-  <circle cx="200" cy="80" r="120" fill="#38bdf8" opacity="0.08" filter="url(#glow)" />
-  <circle cx="800" cy="240" r="140" fill="#a855f7" opacity="0.08" filter="url(#glow)" />
+  <!-- Cyber Background Grid -->
+  <rect x="6" y="6" width="988" height="358" rx="19" fill="url(#grid)" />
+
+  <!-- Dynamic Ambient Light Orbs -->
+  <circle cx="200" cy="90" r="130" fill="#38bdf8" opacity="0.09" filter="url(#bannerGlow)" class="orb-anim" />
+  <circle cx="800" cy="250" r="150" fill="#a855f7" opacity="0.09" filter="url(#bannerGlow)" class="orb-anim" />
+
+  <!-- Scanning Line Effect -->
+  <g opacity="0.15" class="scanline">
+    <line x1="6" y1="0" x2="994" y2="0" stroke="url(#laserBeam)" stroke-width="2" />
+  </g>
 
   <!-- Top Decorative Tech Bar -->
   <g transform="translate(45, 45)">
@@ -74,9 +96,9 @@
     <circle cx="0" cy="0" r="6" fill="#ef4444" />
     <circle cx="20" cy="0" r="6" fill="#f59e0b" />
     <circle cx="40" cy="0" r="6" fill="#10b981" />
-    
+
     <!-- Status Pill -->
-    <rect x="70" y="-12" width="360" height="24" rx="12" fill="rgba(56, 189, 248, 0.1)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1" />
+    <rect x="70" y="-12" width="370" height="24" rx="12" fill="rgba(56, 189, 248, 0.1)" stroke="rgba(56, 189, 248, 0.3)" stroke-width="1" />
     <circle cx="85" cy="0" r="4" fill="#38bdf8">
       <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
     </circle>
@@ -87,8 +109,8 @@
   <g transform="translate(860, 65)">
     <polygon points="40,5 75,25 75,65 40,85 5,65 5,25" fill="none" stroke="url(#textGrad)" stroke-width="2" />
     <polygon points="40,15 65,30 65,60 40,75 15,60 15,30" fill="rgba(168, 85, 247, 0.15)" stroke="#38bdf8" stroke-width="1.5" />
-    <circle cx="40" cy="45" r="8" fill="#38bdf8" filter="url(#glow)">
-      <animate attributeName="r" values="7;10;7" dur="3s" repeatCount="indefinite" />
+    <circle cx="40" cy="45" r="8" fill="#38bdf8" filter="url(#bannerGlow)">
+      <animate attributeName="r" values="7;11;7" dur="2.5s" repeatCount="indefinite" />
     </circle>
     <!-- Cross circuit lines -->
     <line x1="40" y1="5" x2="40" y2="25" stroke="#38bdf8" stroke-width="1.5" />
@@ -102,38 +124,38 @@
 
   <!-- Animated Tagline with Blinking Cursor -->
   <text x="45" y="180" class="subtitle">
-    AI-Powered Multilingual Coding Model &amp; Autonomous Software Development Agent
+    Autonomous Multilingual Coding Model &amp; Self-Repairing Software Synthesis Engine
   </text>
-  
+
   <text x="45" y="215" font-family="'SF Mono', 'Fira Code', monospace" font-size="14" fill="#38bdf8">
     <tspan fill="#64748b">&gt; </tspan>27B Pipeline <tspan fill="#64748b">•</tspan> 126.9M Hybrid DeltaNet <tspan fill="#64748b">•</tspan> Sandboxed Self-Repair <tspan fill="#64748b">•</tspan> FIM &amp; ChatML
     <tspan class="cursor" fill="#ec4899">█</tspan>
   </text>
 
   <!-- Bottom Metric Chips Row -->
-  <g transform="translate(45, 270)">
+  <g transform="translate(45, 275)">
     <!-- Chip 1: Tests Passing -->
-    <rect x="0" y="0" width="210" height="42" rx="8" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1" />
-    <circle cx="18" cy="21" r="5" fill="#10b981" />
+    <rect x="0" y="0" width="210" height="44" rx="8" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.4)" stroke-width="1" />
+    <circle cx="18" cy="22" r="5" fill="#10b981" />
     <text x="32" y="19" font-family="-apple-system, sans-serif" font-size="10" fill="#6ee7b7" font-weight="600">UNIT &amp; E2E SUITE</text>
-    <text x="32" y="33" class="chip-text" font-weight="700">48/48 Passed (100%)</text>
+    <text x="32" y="34" class="chip-text" font-weight="700">48/48 Passed (100%)</text>
 
     <!-- Chip 2: Datasets Cataloged -->
-    <rect x="225" y="0" width="220" height="42" rx="8" fill="rgba(56, 189, 248, 0.1)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1" />
-    <circle cx="243" cy="21" r="5" fill="#38bdf8" />
+    <rect x="225" y="0" width="220" height="44" rx="8" fill="rgba(56, 189, 248, 0.1)" stroke="rgba(56, 189, 248, 0.4)" stroke-width="1" />
+    <circle cx="243" cy="22" r="5" fill="#38bdf8" />
     <text x="257" y="19" font-family="-apple-system, sans-serif" font-size="10" fill="#7dd3fc" font-weight="600">CURATED DATASETS</text>
-    <text x="257" y="33" class="chip-text" font-weight="700">26 Datasets • 265k Tokens</text>
+    <text x="257" y="34" class="chip-text" font-weight="700">26 Datasets • 265k Tokens</text>
 
     <!-- Chip 3: Model Architecture -->
-    <rect x="460" y="0" width="210" height="42" rx="8" fill="rgba(168, 85, 247, 0.1)" stroke="rgba(168, 85, 247, 0.4)" stroke-width="1" />
-    <circle cx="478" cy="21" r="5" fill="#c084fc" />
+    <rect x="460" y="0" width="210" height="44" rx="8" fill="rgba(168, 85, 247, 0.1)" stroke="rgba(168, 85, 247, 0.4)" stroke-width="1" />
+    <circle cx="478" cy="22" r="5" fill="#c084fc" />
     <text x="492" y="19" font-family="-apple-system, sans-serif" font-size="10" fill="#d8b4fe" font-weight="600">HYBRID ARCHITECTURE</text>
-    <text x="492" y="33" class="chip-text" font-weight="700">3x [3 DeltaNet + 1 Attn]</text>
+    <text x="492" y="34" class="chip-text" font-weight="700">3x [3 DeltaNet + 1 Attn]</text>
 
     <!-- Chip 4: Zero Cloud Spend -->
-    <rect x="685" y="0" width="225" height="42" rx="8" fill="rgba(244, 114, 182, 0.1)" stroke="rgba(244, 114, 182, 0.4)" stroke-width="1" />
-    <circle cx="703" cy="21" r="5" fill="#f472b6" />
+    <rect x="685" y="0" width="225" height="44" rx="8" fill="rgba(244, 114, 182, 0.1)" stroke="rgba(244, 114, 182, 0.4)" stroke-width="1" />
+    <circle cx="703" cy="22" r="5" fill="#f472b6" />
     <text x="717" y="19" font-family="-apple-system, sans-serif" font-size="10" fill="#fbcfe8" font-weight="600">LOCAL RESOURCE GATE</text>
-    <text x="717" y="33" class="chip-text" font-weight="700">$0.00 Spend • 4GB VRAM Gate</text>
+    <text x="717" y="34" class="chip-text" font-weight="700">$0.00 Spend • 4GB VRAM Gate</text>
   </g>
 </svg>

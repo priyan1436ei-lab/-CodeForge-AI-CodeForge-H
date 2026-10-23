@@ -1,0 +1,245 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 420" width="100%" height="auto" style="background: transparent;">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="pipeBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#060913" />
+      <stop offset="50%" stop-color="#0a101f" />
+      <stop offset="100%" stop-color="#040711" />
+    </linearGradient>
+
+    <!-- Border Gradient -->
+    <linearGradient id="pipeBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" stop-opacity="0.7">
+        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#ec4899;#10b981;#38bdf8" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#ec4899" stop-opacity="0.7">
+        <animate attributeName="stop-color" values="#ec4899;#10b981;#38bdf8;#818cf8;#ec4899" dur="10s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <!-- Node Card Gradients -->
+    <linearGradient id="cardGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#0e1726" />
+      <stop offset="100%" stop-color="#080e1a" />
+    </linearGradient>
+
+    <!-- Glow Filter -->
+    <filter id="pipeGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="5" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+
+    <filter id="laserGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes pulseRing {
+      0% { r: 16px; opacity: 0.8; }
+      100% { r: 28px; opacity: 0; }
+    }
+    @keyframes flowLaser {
+      0% { stroke-dashoffset: 80; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes feedbackLoopFlow {
+      0% { stroke-dashoffset: 0; }
+      100% { stroke-dashoffset: -80; }
+    }
+    @keyframes badgeBlink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.3; }
+    }
+    @keyframes cardPulse1 { 0%, 100% { stroke: #38bdf8; } 50% { stroke: #7dd3fc; } }
+    @keyframes cardPulse2 { 0%, 100% { stroke: #818cf8; } 50% { stroke: #a5b4fc; } }
+    @keyframes cardPulse3 { 0%, 100% { stroke: #c084fc; } 50% { stroke: #e9d5ff; } }
+    @keyframes cardPulse4 { 0%, 100% { stroke: #f59e0b; } 50% { stroke: #fde68a; } }
+    @keyframes cardPulse5 { 0%, 100% { stroke: #ec4899; } 50% { stroke: #fbcfe8; } }
+    @keyframes cardPulse6 { 0%, 100% { stroke: #10b981; } 50% { stroke: #6ee7b7; } }
+
+    .laser-wire {
+      stroke-dasharray: 8 6;
+      animation: flowLaser 1.8s linear infinite;
+    }
+    .repair-wire {
+      stroke-dasharray: 6 5;
+      animation: feedbackLoopFlow 2s linear infinite;
+    }
+    .ring-anim {
+      animation: pulseRing 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+    }
+    .node-text-title {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      fill: #f1f5f9;
+    }
+    .node-text-sub {
+      font-family: 'SF Mono', 'Fira Code', Menlo, monospace;
+      font-size: 10px;
+      fill: #94a3b8;
+    }
+    .tag-text {
+      font-family: 'SF Mono', 'Fira Code', Menlo, monospace;
+      font-size: 9.5px;
+      font-weight: 700;
+    }
+  </style>
+
+  <!-- Frame Background -->
+  <rect x="5" y="5" width="950" height="410" rx="16" fill="url(#pipeBg)" stroke="url(#pipeBorder)" stroke-width="1.8" />
+
+  <!-- Background Grid -->
+  <g opacity="0.12">
+    <line x1="40" y1="90" x2="920" y2="90" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 8" />
+    <line x1="40" y1="210" x2="920" y2="210" stroke="#818cf8" stroke-width="1" stroke-dasharray="4 8" />
+    <line x1="40" y1="330" x2="920" y2="330" stroke="#38bdf8" stroke-width="1" stroke-dasharray="4 8" />
+  </g>
+
+  <!-- Top Status Bar -->
+  <g transform="translate(35, 38)">
+    <circle cx="0" cy="0" r="4" fill="#38bdf8">
+      <animate attributeName="opacity" values="1;0.2;1" dur="2s" repeatCount="indefinite" />
+    </circle>
+    <text x="14" y="4" font-family="'SF Mono', 'Fira Code', monospace" font-size="11" font-weight="700" fill="#38bdf8" letter-spacing="1">
+      AUTONOMOUS RECURSIVE SOFTWARE SYNTHESIS PIPELINE
+    </text>
+    <text x="760" y="4" font-family="'SF Mono', 'Fira Code', monospace" font-size="10.5" fill="#64748b">
+      STATE: <tspan fill="#34d399">RECOVERY ACTIVE</tspan> • FAILOVER: <tspan fill="#38bdf8">0ms</tspan>
+    </text>
+  </g>
+
+  <!-- Connection Laser Wires (Between Stages 1 -> 2 -> 3 -> 4 -> 6) -->
+  <!-- Line 1 to 2 -->
+  <line x1="170" y1="150" x2="200" y2="150" stroke="#38bdf8" stroke-width="2.5" class="laser-wire" filter="url(#laserGlow)" />
+  <!-- Line 2 to 3 -->
+  <line x1="335" y1="150" x2="365" y2="150" stroke="#818cf8" stroke-width="2.5" class="laser-wire" filter="url(#laserGlow)" />
+  <!-- Line 3 to 4 -->
+  <line x1="500" y1="150" x2="530" y2="150" stroke="#c084fc" stroke-width="2.5" class="laser-wire" filter="url(#laserGlow)" />
+  <!-- Line 4 to 6 (Pass branch) -->
+  <line x1="665" y1="150" x2="795" y2="150" stroke="#10b981" stroke-width="2.5" class="laser-wire" filter="url(#laserGlow)" />
+
+  <!-- Self-Repair Feedback Loop (Stage 4 -> Stage 5 -> Stage 4) -->
+  <!-- Down from Sandbox to Repair -->
+  <path d="M 600 205 L 600 250 L 500 250" fill="none" stroke="#f59e0b" stroke-width="2" class="repair-wire" />
+  <!-- Left from Repair back up to Sandbox -->
+  <path d="M 365 250 L 265 250 L 265 205" fill="none" stroke="#ec4899" stroke-width="2" class="repair-wire" />
+
+  <!-- Repair Loop Label -->
+  <g transform="translate(435, 275)">
+    <rect x="-85" y="-12" width="170" height="22" rx="11" fill="rgba(236, 72, 153, 0.15)" stroke="#ec4899" stroke-width="1" />
+    <circle cx="-70" cy="-1" r="3" fill="#ec4899">
+      <animate attributeName="opacity" values="1;0.2;1" dur="1s" repeatCount="indefinite" />
+    </circle>
+    <text x="-60" y="2" font-family="'SF Mono', 'Fira Code', monospace" font-size="9.5" fill="#f472b6" font-weight="700">
+      AST SELF-REPAIR (≤3x)
+    </text>
+  </g>
+
+  <!-- ==================== STAGE NODES ==================== -->
+
+  <!-- Node 1: Prompt Ingest -->
+  <g transform="translate(35, 95)">
+    <rect x="0" y="0" width="135" height="110" rx="10" fill="url(#cardGrad1)" stroke="#38bdf8" stroke-width="1.5" />
+    <circle cx="22" cy="24" r="10" fill="rgba(56, 189, 248, 0.2)" />
+    <circle cx="22" cy="24" r="5" fill="#38bdf8" />
+    <circle cx="22" cy="24" r="16" fill="none" stroke="#38bdf8" class="ring-anim" />
+    <text x="42" y="28" class="tag-text" fill="#38bdf8">PHASE 01</text>
+    <text x="14" y="60" class="node-text-title">User Prompt</text>
+    <text x="14" y="78" class="node-text-sub">Natural Language</text>
+    <text x="14" y="93" class="node-text-sub">Goal Extraction</text>
+  </g>
+
+  <!-- Node 2: Pydantic Planner -->
+  <g transform="translate(200, 95)">
+    <rect x="0" y="0" width="135" height="110" rx="10" fill="url(#cardGrad1)" stroke="#818cf8" stroke-width="1.5" />
+    <circle cx="22" cy="24" r="10" fill="rgba(129, 140, 248, 0.2)" />
+    <circle cx="22" cy="24" r="5" fill="#818cf8" />
+    <circle cx="22" cy="24" r="16" fill="none" stroke="#818cf8" class="ring-anim" />
+    <text x="42" y="28" class="tag-text" fill="#818cf8">PHASE 02</text>
+    <text x="14" y="60" class="node-text-title">ProjectPlan</text>
+    <text x="14" y="78" class="node-text-sub">Pydantic v2 Schema</text>
+    <text x="14" y="93" class="node-text-sub">Tech Stack Decision</text>
+  </g>
+
+  <!-- Node 3: Multi-File Synthesizer -->
+  <g transform="translate(365, 95)">
+    <rect x="0" y="0" width="135" height="110" rx="10" fill="url(#cardGrad1)" stroke="#c084fc" stroke-width="1.5" />
+    <circle cx="22" cy="24" r="10" fill="rgba(192, 132, 252, 0.2)" />
+    <circle cx="22" cy="24" r="5" fill="#c084fc" />
+    <circle cx="22" cy="24" r="16" fill="none" stroke="#c084fc" class="ring-anim" />
+    <text x="42" y="28" class="tag-text" fill="#c084fc">PHASE 03</text>
+    <text x="14" y="60" class="node-text-title">Synthesizer</text>
+    <text x="14" y="78" class="node-text-sub">Multi-File Project</text>
+    <text x="14" y="93" class="node-text-sub">AST Jail Protection</text>
+  </g>
+
+  <!-- Node 4: Sandbox Jail -->
+  <g transform="translate(530, 95)">
+    <rect x="0" y="0" width="135" height="110" rx="10" fill="url(#cardGrad1)" stroke="#f59e0b" stroke-width="1.5" />
+    <circle cx="22" cy="24" r="10" fill="rgba(245, 158, 11, 0.2)" />
+    <circle cx="22" cy="24" r="5" fill="#f59e0b" />
+    <circle cx="22" cy="24" r="16" fill="none" stroke="#f59e0b" class="ring-anim" />
+    <text x="42" y="28" class="tag-text" fill="#f59e0b">PHASE 04</text>
+    <text x="14" y="60" class="node-text-title">Sandbox Jail</text>
+    <text x="14" y="78" class="node-text-sub">Pytest Runner (30s)</text>
+    <text x="14" y="93" class="node-text-sub">Non-Root Process</text>
+  </g>
+
+  <!-- Node 5: Bounded Self-Repair (Positioned underneath) -->
+  <g transform="translate(365, 230)">
+    <rect x="0" y="0" width="135" height="85" rx="10" fill="url(#cardGrad1)" stroke="#ec4899" stroke-width="1.5" />
+    <circle cx="22" cy="20" r="8" fill="rgba(236, 72, 153, 0.2)" />
+    <circle cx="22" cy="20" r="4" fill="#ec4899" />
+    <text x="38" y="24" class="tag-text" fill="#ec4899">REPAIR ENGINE</text>
+    <text x="14" y="50" class="node-text-title">AST Auto-Repair</text>
+    <text x="14" y="68" class="node-text-sub">Traceback Analysis</text>
+  </g>
+
+  <!-- Node 6: Verified Export -->
+  <g transform="translate(795, 95)">
+    <rect x="0" y="0" width="130" height="110" rx="10" fill="url(#cardGrad1)" stroke="#10b981" stroke-width="1.8" />
+    <circle cx="22" cy="24" r="10" fill="rgba(16, 185, 129, 0.2)" />
+    <circle cx="22" cy="24" r="5" fill="#10b981" />
+    <circle cx="22" cy="24" r="16" fill="none" stroke="#10b981" class="ring-anim" />
+    <text x="42" y="28" class="tag-text" fill="#10b981">PHASE 05</text>
+    <text x="14" y="60" class="node-text-title">Verified ZIP</text>
+    <text x="14" y="78" class="node-text-sub">SHA-256 Checksum</text>
+    <text x="14" y="93" class="node-text-sub">SFT Feedback Loop</text>
+  </g>
+
+  <!-- Bottom Metric Pills Row -->
+  <g transform="translate(35, 345)">
+    <!-- Pill 1: Pytest Green -->
+    <rect x="0" y="0" width="205" height="42" rx="8" fill="rgba(16, 185, 129, 0.1)" stroke="rgba(16, 185, 129, 0.35)" stroke-width="1" />
+    <circle cx="18" cy="21" r="5" fill="#10b981" />
+    <text x="32" y="19" font-family="-apple-system, sans-serif" font-size="10" fill="#6ee7b7" font-weight="600">TEST ACCURACY</text>
+    <text x="32" y="33" class="tag-text" font-size="12" fill="#ecfdf5">48/48 (100% Green)</text>
+
+    <!-- Pill 2: Sandbox Jail -->
+    <rect x="220" y="0" width="220" height="42" rx="8" fill="rgba(56, 189, 248, 0.1)" stroke="rgba(56, 189, 248, 0.35)" stroke-width="1" />
+    <circle cx="238" cy="21" r="5" fill="#38bdf8" />
+    <text x="252" y="19" font-family="-apple-system, sans-serif" font-size="10" fill="#7dd3fc" font-weight="600">ISOLATED PROCESS JAIL</text>
+    <text x="252" y="33" class="tag-text" font-size="12" fill="#f0f9ff">Timeout 30s • Path-Safe</text>
+
+    <!-- Pill 3: Repair Latency -->
+    <rect x="455" y="0" width="220" height="42" rx="8" fill="rgba(168, 85, 247, 0.1)" stroke="rgba(168, 85, 247, 0.35)" stroke-width="1" />
+    <circle cx="473" cy="21" r="5" fill="#c084fc" />
+    <text x="487" y="19" font-family="-apple-system, sans-serif" font-size="10" fill="#d8b4fe" font-weight="600">BOUNDED RETRIES</text>
+    <text x="487" y="33" class="tag-text" font-size="12" fill="#faf5ff">Max 3 Tries • AST Diff</text>
+
+    <!-- Pill 4: Cloud Spend -->
+    <rect x="690" y="0" width="235" height="42" rx="8" fill="rgba(244, 114, 182, 0.1)" stroke="rgba(244, 114, 182, 0.35)" stroke-width="1" />
+    <circle cx="708" cy="21" r="5" fill="#f472b6" />
+    <text x="722" y="19" font-family="-apple-system, sans-serif" font-size="10" fill="#fbcfe8" font-weight="600">CLOUD SPEND GATE</text>
+    <text x="722" y="33" class="tag-text" font-size="12" fill="#fff1f2">$0.00 • Local RTX 3050</text>
+  </g>
+</svg>

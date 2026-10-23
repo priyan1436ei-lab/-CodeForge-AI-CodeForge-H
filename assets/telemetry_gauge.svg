@@ -1,0 +1,111 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 320" width="100%" height="auto" style="background: transparent;">
+  <defs>
+    <!-- Background Gradient -->
+    <linearGradient id="meterBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#070c18" />
+      <stop offset="50%" stop-color="#0c1324" />
+      <stop offset="100%" stop-color="#040712" />
+    </linearGradient>
+
+    <!-- Border Gradient -->
+    <linearGradient id="meterBorder" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#10b981" stop-opacity="0.8">
+        <animate attributeName="stop-color" values="#10b981;#38bdf8;#818cf8;#10b981" dur="10s" repeatCount="indefinite" />
+      </stop>
+      <stop offset="100%" stop-color="#38bdf8" stop-opacity="0.8">
+        <animate attributeName="stop-color" values="#38bdf8;#818cf8;#10b981;#38bdf8" dur="10s" repeatCount="indefinite" />
+      </stop>
+    </linearGradient>
+
+    <linearGradient id="greenMeter" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#10b981" />
+      <stop offset="100%" stop-color="#34d399" />
+    </linearGradient>
+
+    <linearGradient id="cyanMeter" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#0284c7" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+
+    <linearGradient id="purpleMeter" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#7c3aed" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+
+    <filter id="gaugeGlow">
+      <feGaussianBlur stdDeviation="3" result="blur" />
+      <feMerge>
+        <feMergeNode in="blur" />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <style>
+    @keyframes circleFillGreen {
+      0% { stroke-dashoffset: 440; }
+      100% { stroke-dashoffset: 0; }
+    }
+    @keyframes circleFillCyan {
+      0% { stroke-dashoffset: 440; }
+      100% { stroke-dashoffset: 140; }
+    }
+    @keyframes circleFillPurple {
+      0% { stroke-dashoffset: 440; }
+      100% { stroke-dashoffset: 80; }
+    }
+    @keyframes blinkDot { 0%, 100% { opacity: 1; } 50% { opacity: 0.2; } }
+
+    .dial-green { stroke-dasharray: 440; animation: circleFillGreen 2.4s ease-out forwards; }
+    .dial-cyan { stroke-dasharray: 440; animation: circleFillCyan 2.4s ease-out forwards; }
+    .dial-purple { stroke-dasharray: 440; animation: circleFillPurple 2.4s ease-out forwards; }
+    .live-dot { animation: blinkDot 1.5s infinite; }
+    .gauge-title { font-family: -apple-system, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: 1px; fill: #94a3b8; }
+    .gauge-val { font-family: 'SF Mono', 'Fira Code', monospace; font-size: 26px; font-weight: 800; }
+    .gauge-sub { font-family: 'SF Mono', monospace; font-size: 11px; fill: #64748b; }
+  </style>
+
+  <!-- Frame Background -->
+  <rect x="5" y="5" width="950" height="310" rx="16" fill="url(#meterBg)" stroke="url(#meterBorder)" stroke-width="1.8" />
+
+  <!-- Header Strip -->
+  <g transform="translate(35, 35)">
+    <circle cx="0" cy="0" r="4" fill="#10b981" class="live-dot" />
+    <text x="14" y="4" font-family="'SF Mono', monospace" font-size="11" font-weight="700" fill="#34d399" letter-spacing="1">
+      LIVE TELEMETRY &amp; HARDWARE VERIFICATION SUITE
+    </text>
+    <text x="760" y="4" font-family="'SF Mono', monospace" font-size="10.5" fill="#64748b">
+      BUDGET CEILING: <tspan fill="#10b981" font-weight="700">$0.00</tspan> • STATUS: <tspan fill="#38bdf8">100% VERIFIED</tspan>
+    </text>
+  </g>
+
+  <!-- Gauge 1: Pytest Green Pass Rate (100%) -->
+  <g transform="translate(160, 160)">
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#132724" stroke-width="10" />
+    <circle cx="0" cy="0" r="65" fill="none" stroke="url(#greenMeter)" stroke-width="10" stroke-linecap="round" transform="rotate(-90)" class="dial-green" filter="url(#gaugeGlow)" />
+    <text x="0" y="-8" class="gauge-val" fill="#10b981" text-anchor="middle">100%</text>
+    <text x="0" y="14" font-family="'SF Mono', monospace" font-size="11" fill="#34d399" font-weight="700" text-anchor="middle">48 / 48</text>
+    <text x="0" y="90" class="gauge-title" text-anchor="middle">TEST INTEGRITY</text>
+    <text x="0" y="106" class="gauge-sub" text-anchor="middle">0 Failures • 0 Errors</text>
+  </g>
+
+  <!-- Gauge 2: Local VRAM Footprint (RTX 3050 6GB) -->
+  <g transform="translate(480, 160)">
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#0e233d" stroke-width="10" />
+    <circle cx="0" cy="0" r="65" fill="none" stroke="url(#cyanMeter)" stroke-width="10" stroke-linecap="round" transform="rotate(-90)" class="dial-cyan" filter="url(#gaugeGlow)" />
+    <text x="0" y="-8" class="gauge-val" fill="#38bdf8" text-anchor="middle">4.1 GB</text>
+    <text x="0" y="14" font-family="'SF Mono', monospace" font-size="11" fill="#7dd3fc" font-weight="700" text-anchor="middle">/ 6.0 GB VRAM</text>
+    <text x="0" y="90" class="gauge-title" text-anchor="middle">HARDWARE GATE</text>
+    <text x="0" y="106" class="gauge-sub" text-anchor="middle">NVIDIA RTX 3050 Laptop</text>
+  </g>
+
+  <!-- Gauge 3: Dataset Ingestion & Token Volume -->
+  <g transform="translate(800, 160)">
+    <circle cx="0" cy="0" r="65" fill="none" stroke="#25123d" stroke-width="10" />
+    <circle cx="0" cy="0" r="65" fill="none" stroke="url(#purpleMeter)" stroke-width="10" stroke-linecap="round" transform="rotate(-90)" class="dial-purple" filter="url(#gaugeGlow)" />
+    <text x="0" y="-8" class="gauge-val" fill="#c084fc" text-anchor="middle">265k</text>
+    <text x="0" y="14" font-family="'SF Mono', monospace" font-size="11" fill="#d8b4fe" font-weight="700" text-anchor="middle">TOKENS CURATED</text>
+    <text x="0" y="90" class="gauge-title" text-anchor="middle">DATASET PURITY</text>
+    <text x="0" y="106" class="gauge-sub" text-anchor="middle">0% Benchmark Leakage</text>
+  </g>
+</svg>
